@@ -1,0 +1,38 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Set up SageMaker for Recommendation Engine
+Resources:
+  Notebook:
+    Type: 'AWS::SageMaker::NotebookInstance'
+    Properties:
+      DirectInternetAccess: Enabled
+      InstanceType: ml.t3.medium
+      RoleArn: !GetAtt 
+        - iamrole
+        - Arn
+      DefaultCodeRepository: 'https://github.com/padili513/movie-recommendation-engine.git'
+      RootAccess: Disabled
+      VolumeSizeInGB: 5
+  iamrole:
+    Type: 'AWS::IAM::Role'
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - sagemaker.amazonaws.com
+            Action:
+              - 'sts:AssumeRole'
+      Policies:
+        - PolicyName: logging
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action:
+                  - 'logs:CreateLogStream'
+                  - 'logs:PutLogEvents'
+                  - 'logs:CreateLogGroup'
+                  - 'logs:DescribeLogStreams'
+                Resource: '*'
