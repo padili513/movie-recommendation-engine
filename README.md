@@ -28,3 +28,6 @@ predictions = km.fit_predict(movies_list)
 ```
 ## Recommend
 After identifying my clusters, as part of recommending movies, I analyzed the clusters to find commonalities.
+
+## Amazon SageMaker
+Aftering finishing the Jupyter notebook, I wrote a CloudFormation template that creates a notebook instance of SageMaker that associates with this Git repository.
