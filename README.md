@@ -1,5 +1,5 @@
 # Movie Recommendation Engine
-Netflix Style Recommendation Engine with Amazon SageMaker
+Netflix-Style Recommendation Engine with Amazon SageMaker
 
 ## Use Case and Data
 For a Netflix-style recommendation engine, I decided to recommend movies. I [downloaded](https://datasets.imdbws.com/) `title.akas.tsv.gz`, `title.basics.tsv.gz`, and `title.ratings.tsv.gz` from [IMDb](https://www.imdb.com/interfaces/).
